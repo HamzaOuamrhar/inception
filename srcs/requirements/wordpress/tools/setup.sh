@@ -16,6 +16,17 @@ done
 
 
 wp core install --url=$DOMAIN --title=Inception --admin_user=$USER --admin_password=$PASSWORD --admin_email=$WP_EMAIL --allow-root --path=/var/www/html
-# wp user create $USER $WP_EMAIL --role=author --user_pass=$PASSWORD --allow-root --path=/var/www/html
+wp user create $WP_USER $WP_USER_EMAIL --role=author --user_pass=$WP_PASSWORD --allow-root --path=/var/www/html
 
-echo "success............"
+# which php7.4-fpm
+
+# while true; do
+#   echo "hello"
+# done
+
+mkdir /run/php
+
+sed -i 's#listen = /run/php/php7.4-fpm.sock#listen = 0.0.0.0:9000#' /etc/php/7.4/fpm/pool.d/www.conf
+
+
+/usr/sbin/php-fpm7.4 -F

@@ -20,7 +20,7 @@ services:
    - mariadb
   env_file:
    - .env
-  restart: on-failure
+#   restart: on-failure
 
  mariadb:
   container_name: md_c
