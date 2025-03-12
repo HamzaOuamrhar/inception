@@ -8,4 +8,5 @@ RUN chmod +x /usr/local/bin/setup.sh
 RUN chmod +x wp-cli.phar && mv wp-cli.phar /usr/local/bin/wp
 WORKDIR /var/www/html
 RUN wp core download --allow-root && mv wp-config-sample.php wp-config.php
+EXPOSE 9000
 CMD /usr/local/bin/setup.sh
