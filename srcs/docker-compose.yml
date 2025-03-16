@@ -13,7 +13,9 @@ services:
    - inception_net
   volumes:
    - wordpress_data:/var/www/html
-#   restart: on-failure
+  env_file:
+   - .env
+  restart: on-failure
 
 
  wordpress:
@@ -31,8 +33,8 @@ services:
    - .env
   volumes:
    - wordpress_data:/var/www/html
-
-#   restart: on-failure
+   - mariadb_data:/var/lib/mysql   
+  restart: on-failure
 
  mariadb:
   container_name: mariadb
@@ -42,7 +44,9 @@ services:
   env_file: .env
   networks:
      - inception_net
-  # restart: on-failure
+  volumes:
+     - mariadb_data:/var/lib/mysql   
+  restart: on-failure
 
 networks:
  inception_net:
@@ -50,3 +54,4 @@ networks:
 
 volumes:
  wordpress_data:
+ mariadb_data:
