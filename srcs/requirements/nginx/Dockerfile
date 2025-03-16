@@ -1,5 +1,7 @@
 FROM debian:11
 RUN apt-get update && apt-get upgrade && apt-get install -y nginx openssl
+EXPOSE 443
 COPY tools/nginx.conf /etc/nginx/nginx.conf
-EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+COPY tools/script.sh .
+RUN chmod +x script.sh
+CMD ./script.sh
