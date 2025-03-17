@@ -33,7 +33,6 @@ services:
    - .env
   volumes:
    - wordpress_data:/var/www/html
-   - mariadb_data:/var/lib/mysql   
   restart: on-failure
 
  mariadb:
