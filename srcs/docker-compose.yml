@@ -22,8 +22,6 @@ services:
   build:
    context: requirements/wordpress
    dockerfile: Dockerfile
-  ports:
-   - "9000:9000"
   container_name: wordpress
   networks:
    - inception_net
@@ -46,6 +44,16 @@ services:
   volumes:
      - mariadb_data:/var/lib/mysql   
   restart: on-failure
+
+ redis:
+  container_name: redis
+  build:
+   context: requirements/bonus/redis
+   dockerfile: Dockerfile
+  networks:
+   - inception_net
+  restart: on-failure
+
 
 networks:
  inception_net:
