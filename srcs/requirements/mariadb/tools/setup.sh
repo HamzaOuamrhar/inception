@@ -1,5 +1,3 @@
-# !/bin/bash
-
 service mariadb start
 
 mysqladmin -u root password $ROOT_PASSWORD

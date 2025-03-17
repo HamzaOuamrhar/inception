@@ -1,5 +1,3 @@
-#!/bin/bash
-
 # ls -l /var/www/html => -rw-rw-rw-   1 root root   405 Mar  9 22:13 index.php
 
 
