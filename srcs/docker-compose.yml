@@ -15,7 +15,7 @@ services:
    - wordpress_data:/var/www/html
   env_file:
    - .env
-  restart: on-failure
+#   restart: on-failure
 
 
  wordpress:
@@ -31,7 +31,7 @@ services:
    - .env
   volumes:
    - wordpress_data:/var/www/html
-  restart: on-failure
+#   restart: on-failure
 
  mariadb:
   container_name: mariadb
@@ -43,7 +43,7 @@ services:
      - inception_net
   volumes:
      - mariadb_data:/var/lib/mysql   
-  restart: on-failure
+#   restart: on-failure
 
  redis:
   container_name: redis
@@ -52,7 +52,24 @@ services:
    dockerfile: Dockerfile
   networks:
    - inception_net
-  restart: on-failure
+#   restart: on-failure
+  depends_on:
+   - wordpress
+ 
+ ftp:
+  container_name: ftp
+  build:
+   context: requirements/bonus/ftp
+   dockerfile: Dockerfile
+  networks:
+   - inception_net
+#   restart: on-failure
+  depends_on:
+   - wordpress
+  volumes:
+   - wordpress_data:/home/ftpuser/files
+  env_file:
+   - .env
 
 
 networks:

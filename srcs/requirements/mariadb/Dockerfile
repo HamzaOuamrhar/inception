@@ -1,7 +1,6 @@
 FROM debian:11
 
-RUN apt-get update && apt-get upgrade && apt-get install -y \
-    mariadb-server
+RUN apt-get update && apt-get install -y mariadb-server
 
 COPY tools/setup.sh .
 
