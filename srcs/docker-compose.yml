@@ -67,9 +67,12 @@ services:
   depends_on:
    - wordpress
   volumes:
-   - wordpress_data:/home/ftpuser/files
+   - wordpress_data:/var/www/html
   env_file:
    - .env
+  ports:
+   - "21:21"
+   - "20000-20100:20000-20100"
 
 
 networks:

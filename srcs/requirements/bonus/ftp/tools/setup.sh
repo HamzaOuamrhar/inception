@@ -1,35 +1,28 @@
-service vsftpd start
+useradd hamza
+
+echo "hamza:haha" | chpasswd
+
+
+mkdir /home/hamza
+
+chown -R hamza:hamza /var/www/html
 
 
 
+sed -i 's/^listen=NO/listen=YES/' /etc/vsftpd.conf
+sed -i 's/^listen_ipv6=YES/listen_ipv6=NO/' /etc/vsftpd.conf
 
-# useradd ftpuser
+echo "
+chroot_local_user=YES
+write_enable=YES
+local_enable=YES
+allow_writeable_chroot=YES
+pasv_enable=YES
+local_root=/var/www/html
+pasv_min_port=20000
+pasv_max_port=20100
+" >> /etc/vsftpd.conf
 
-# echo "ftpuser:$FTP_PASS" | chpasswd
-# echo "ftpuser:ftpuser" > /etc/vsftpd.userlist
+service vsftpd stop
 
-# mkdir /home/$ftp_user/ftp
-
-# chown nobody:nogroup /home/ftpuser
-# chmod a-w /home/ftpuser
-
-# chown ftpuser:ftpuser /home/ftpuser/files
-
-
-
-# echo "write_enable=YES" >> /etc/vsftpd.conf \
-# && echo "chroot_local_user=YES" >> /etc/vsftpd.conf \
-# && echo "local_enable=YES" >> /etc/vsftp.conf \
-# && echo "allow_writeable_chroot=YES" >> /etc/vsftpd.conf \
-# && echo "pasv_enable=YES" >> /etc/vsftpd.conf \
-# && echo "pasv_min_port=20000" >> /etc/vsftpd.conf \
-# && echo "pasv_max_port=30000" >> /etc/vsftpd.conf \
-# && echo "userlist_file=/etc/vsftpd.userlist" >> /etc/vsftpd.conf
-# # && echo "local_root=/home/ftpuser/files" >> /etc/vsftpd.conf \
-
-# mkdir /var/run/vsftpd
-# mkdir /var/run/vsftpd/empty
-
-# /usr/sbin/vsftpd /etc/vsftpd.conf
-
-while true; do sleep 1; done;
+/usr/sbin/vsftpd /etc/vsftpd.conf
