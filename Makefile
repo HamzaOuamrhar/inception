@@ -9,11 +9,11 @@ down:
 clean:
 	docker-compose -f srcs/docker-compose.yml down --rmi all
 
-me:
-	docker build -t me_i srcs/requirements/bonus/me
-	docker run -p 7777:80 -d --env-file srcs/.env --name me me_i
+ad:
+	docker build -t ad_i srcs/requirements/bonus/adminer
+	docker run -d --env-file srcs/.env --name ad ad_i
 
 i:
-	docker stop me
-	docker rm me
-	docker rmi me_i
+	docker stop ad
+	docker rm ad
+	docker rmi ad_i
