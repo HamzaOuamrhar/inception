@@ -9,11 +9,11 @@ down:
 clean:
 	docker-compose -f srcs/docker-compose.yml down --rmi all
 
-ftp:
-	docker build -t ftp_i srcs/requirements/bonus/ftp
-	docker run -p 20001:21 -d --env-file srcs/.env --name ftp ftp_i
+me:
+	docker build -t me_i srcs/requirements/bonus/me
+	docker run -p 7777:80 -d --env-file srcs/.env --name me me_i
 
 i:
-	docker stop ftp
-	docker rm ftp
-	docker rmi ftp_i
+	docker stop me
+	docker rm me
+	docker rmi me_i
