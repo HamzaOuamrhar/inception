@@ -92,6 +92,19 @@ services:
   depends_on:
    - wordpress
 
+ cadviser:
+  container_name: cadvisor
+  build:
+   context: requirements/bonus/cadvisor
+   dockerfile: Dockerfile
+  ports:
+   - "7070:8080"
+  volumes:
+   - /:/rootfs:ro
+   - /var/run/docker.sock:/var/run/docker.sock
+   - /sys:/sys:ro
+   - /var/lib/docker/:/var/lib/docker:ro
+
 
 networks:
  inception_net:
