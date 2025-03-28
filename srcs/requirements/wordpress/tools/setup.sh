@@ -9,6 +9,8 @@ wp config set DB_HOST 'mariadb:3306' --allow-root --path=/var/www/html
 wp config set WP_REDIS_HOST redis --allow-root --path=/var/www/html
 wp config set WP_REDIS_PORT 6379 --allow-root --path=/var/www/html
 
+wp config set WP_HOME https://houamrha.42.fr --allow-root --path=/var/www/html
+wp config set WP_SITEURL https://houamrha.42.fr --allow-root --path=/var/www/html
 
 until mysql -h mariadb -u $USER -p$PASSWORD -e 'SHOW DATABASES;'; do
   echo 'Waiting for MariaDB to be available...'
