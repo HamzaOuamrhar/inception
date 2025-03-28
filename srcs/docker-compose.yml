@@ -113,23 +113,23 @@ services:
 networks:
  inception_net:
 
-volumes:
- wordpress_data:
- mariadb_data:
-
-
 # volumes:
-#   wordpress_data:
-#     driver: local
-#     driver_opts:
-#       type: none
-#       device: /home/your_login/data/wordpress
-#       o: bind
+#  wordpress_data:
+#  mariadb_data:
 
-#   mariadb_data:
-#     driver: local
-#     driver_opts:
-#       type: none
-#       device: /home/your_login/data/mariadb
-#       o: bind
+
+volumes:
+  wordpress_data:
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/houamrha/data/wordpress
+      o: bind
+
+  mariadb_data:
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/houamrha/data/mariadb
+      o: bind
 
