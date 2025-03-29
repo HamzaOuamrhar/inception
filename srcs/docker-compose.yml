@@ -106,7 +106,7 @@ services:
   networks:
    - inception_net
   ports:
-   - "5000:5000"
+   - "5050:5050"
 
  cadviser:
   image: cadvisor:inception
@@ -115,7 +115,7 @@ services:
    context: requirements/bonus/cadvisor
    dockerfile: Dockerfile
   ports:
-   - "7070:8080"
+   - "7070:7070"
   volumes:
    - /:/rootfs:ro
    - /var/run/docker.sock:/var/run/docker.sock
@@ -126,11 +126,6 @@ services:
 
 networks:
  inception_net:
-
-# volumes:
-#  wordpress_data:
-#  mariadb_data:
-
 
 volumes:
   wordpress_data:
