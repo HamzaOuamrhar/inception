@@ -31,7 +31,9 @@ services:
    - .env
   volumes:
    - wordpress_data:/var/www/html
+   - adminer_script:/adminer
   restart: on-failure
+
 
  mariadb:
   container_name: mariadb
@@ -92,6 +94,12 @@ services:
   depends_on:
    - wordpress
   restart: on-failure
+  volumes:
+   - adminer_script:/adminer
+  networks:
+   - inception_net
+  ports:
+   - "5000:5000"
 
  cadviser:
   container_name: cadvisor
@@ -131,3 +139,9 @@ volumes:
       device: /home/houamrha/data/mariadb
       o: bind
 
+  adminer_script:
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/houamrha/data/adminer
+      o: bind
