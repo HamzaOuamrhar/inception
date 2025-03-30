@@ -1,11 +1,10 @@
-useradd hamza
+useradd $USER
 
-echo "hamza:haha" | chpasswd
+echo "$USER:$PASSWORD" | chpasswd
 
+mkdir /home/$USER
 
-mkdir /home/hamza
-
-chown -R hamza:hamza /var/www/html
+chown -R $USER:$USER /var/www/html
 
 
 
