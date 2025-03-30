@@ -1,6 +1,3 @@
-# ls -l /var/www/html => -rw-rw-rw-   1 root root   405 Mar  9 22:13 index.php
-
-
 wp config set SERVER_PORT 3306 --allow-root
 wp config set DB_NAME $DATABASE_NAME --allow-root --path=/var/www/html
 wp config set DB_USER $USER --allow-root --path=/var/www/html
@@ -23,18 +20,11 @@ wp user create $WP_USER $WP_USER_EMAIL --role=author --user_pass=$WP_PASSWORD --
 
 wp plugin install redis-cache --activate --allow-root
 
-
-# which php7.4-fpm
-
-# while true; do
-#   echo "hello"
-# done
-
 mkdir /run/php
 
 sed -i 's#listen = /run/php/php7.4-fpm.sock#listen = 0.0.0.0:9000#' /etc/php/7.4/fpm/pool.d/www.conf
 
-wp redis enable --allow-root
+# wp redis enable --allow-root
 
 
 /usr/sbin/php-fpm7.4 -F
