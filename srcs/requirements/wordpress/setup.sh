@@ -22,6 +22,8 @@ wp plugin install redis-cache --activate --allow-root
 
 mkdir /run/php
 
+wp redis enable --allow-root
+
 sed -i 's#listen = /run/php/php7.4-fpm.sock#listen = 0.0.0.0:9000#' /etc/php/7.4/fpm/pool.d/www.conf
 
 /usr/sbin/php-fpm7.4 -F
